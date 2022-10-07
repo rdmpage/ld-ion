@@ -35,7 +35,7 @@ $files1 = scandir($basedir);
 
 // debug
 //$files1 = array('7713');
-$files1 = array('540');
+//$files1 = array('540');
 //$files1 = array('12');
 //$files1 = array('7714');
 
@@ -97,6 +97,8 @@ foreach ($files1 as $directory)
 							// incorrect capitalisation
 							$xml = preg_replace('/dc:Title/', 'dc:title', $xml);						
 							$xml = preg_replace('/tdwg_co:PublishedIn/', 'tdwg_co:publishedIn', $xml);						
+
+							$xml = preg_replace('/&(?!amp;)/', '&amp;', $xml);	
 							break;
 							
 						case 'ipni_names':
@@ -114,7 +116,7 @@ foreach ($files1 as $directory)
 							/x';
 						
 							$xml = preg_replace($regex, '$1', $xml);												
-							$xml = preg_replace('/&\s/', '&amp; ', $xml);	
+							$xml = preg_replace('/&(?!amp;)/', '&amp;', $xml);	
 							break;
 					
 						default:
